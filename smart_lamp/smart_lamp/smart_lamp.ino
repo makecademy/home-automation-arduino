@@ -45,7 +45,7 @@ void loop()
 {
   // Measure light level
   float sensor_reading = analogRead(A0);
-  float light = sensor_reading/1024*100;
+  float light = (sensor_reading/1024*100);
   
   // Perform power measurement
   float sensor_value = getSensorValue(A1);

@@ -59,7 +59,7 @@ void loop()
   lcd.print(humidity);
   lcd.print("%");
   
-   // Display light level
+  // Display light level
   lcd.setCursor(1,2);
   lcd.print("Light: ");
   lcd.print(light);
