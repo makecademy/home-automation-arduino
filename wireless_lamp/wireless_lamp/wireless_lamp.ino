@@ -28,8 +28,8 @@ Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ
 aREST rest = aREST();
 
 // Your WiFi SSID and password                                         
-#define WLAN_SSID       "yourSSID"
-#define WLAN_PASS       "yourPassword"
+#define WLAN_SSID       "KrakowskiePrzedm51m.15(flat15)"
+#define WLAN_PASS       "KrK51flat15_1944_15"
 #define WLAN_SECURITY   WLAN_SEC_WPA2
 
 // The port to listen for incoming TCP connections 
