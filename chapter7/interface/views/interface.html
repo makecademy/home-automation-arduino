@@ -1,0 +1,36 @@
+<head>
+
+<LINK href="/css/interface.css" rel="stylesheet" type="text/css" />
+<LINK href="/css/flat-ui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/js/interface.js"></script>
+<script type="text/javascript" src="/js/arest.js"></script>
+
+</head>
+
+<body>
+
+<div class="mainContainer">
+
+<div class="title">Home Automation System</div>
+
+<div class="buttonBlock"><span class="buttonTitle">Lamp</span>
+
+        <button class="btn btn-block btn-lg btn-primary" type="button" id="1" onClick="buttonClick(this.id)">On</button>
+        <button class="btn btn-block btn-lg btn-danger" type="button" id="2" onClick="buttonClick(this.id)">Off</button>
+        <div class="status" id="wifiStatus">Offline</div>
+
+</div>
+
+<div class="buttonBlock"><span class="buttonTitle">XBee module</span>
+   
+    <div class="display" id="xbeeTempDisplay">Temperature: waiting ...</div>
+    <div class="display" id="xbeeHumDisplay">Humidity: waiting ...</div>
+    <div class="display" id="xbeeLightDisplay">Light: waiting ...</div>
+    <div class="status" id="xbeeStatus">Offline</div>
+   
+</div>
+
+</div>
+</body>
