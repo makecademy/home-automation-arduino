@@ -1,6 +1,6 @@
 // Hardware parameters
 wifi_address = 'arduino.local';
-xbee_address = '/dev/cu.usbserial-A702LF8B';
+xbee_address = '/dev/ttyUSB0';
 
 setInterval(function() {
 
