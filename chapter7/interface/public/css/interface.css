@@ -6,6 +6,10 @@ body {
     margin: 25px;
 }
 
+.sensorBlock{    
+    margin: 25px;
+}
+
 .title{
     text-align: center;
     font-size: 40px;

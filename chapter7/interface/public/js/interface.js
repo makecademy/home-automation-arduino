@@ -5,7 +5,7 @@ xbee_address = '/dev/cu.usbserial-A702LF8B';
 setInterval(function() {
 
   // Get sensor data
-  json_data = send(type, address, '/digital/8');
+  json_data = send('serial', xbee_address, '/digital/8');
 
   // Get sensor ID
   var sensorID = json_data.id;
