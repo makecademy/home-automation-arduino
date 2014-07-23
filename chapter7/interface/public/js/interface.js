@@ -1,33 +1,22 @@
 // Hardware parameters
-wifi_address = '192.168.1.104';
-
-xbee_address = '/dev/ttyUSB0';
+wifi_address = 'arduino.local';
+xbee_address = '/dev/cu.usbserial-A702LF8B';
 
 setInterval(function() {
-    
-  json_data = send('serial', xbee_address, '/temperature');
-  if (json_data.temperature){
-     $("#xbeeTempDisplay").html("Temperature: " + json_data.temperature + "°C");    
-  }
 
-  //json_data = send('serial', xbee_address, '/humidity');
-  //if (json_data.humidity){
-    //$("#xbeeHumDisplay").html("Humidity: " + json_data.humidity + "%");    
-  //}
+  // Get sensor data
+  json_data = send(type, address, '/digital/8');
 
-  //json_data = send('serial', xbee_address, '/light');
-  //if (json_data.light){
-    //$("#xbeeLightDisplay").html("Light: " + json_data.light + "%");    
-  //}
-
-  if (json_data.connected == 1){
-    $("#xbeeStatus").html("Online");
-    $("#xbeeStatus").css("color","green");    
+  // Get sensor ID
+  var sensorID = json_data.id;
+  
+  // Update display  
+  if (json_data.return_value == 0){
+    $("#display_" + sensorID).css("background-color","gray");    
   }
   else {
-    $("#xbeeStatus").html("Offline");
-    $("#xbeeStatus").css("color","red");     
-  }
+    $("#display_" + sensorID).css("background-color","orange");  
+  }  
 
 }, 2000);
 
@@ -35,11 +24,11 @@ setInterval(function() {
 function buttonClick(clicked_id){
 
   if (clicked_id == "1"){
-    send('wifi', wifi_address, "/digital/7/1");  
+    send('wifi', wifi_address, "/digital/8/1");  
   } 
 
   if (clicked_id == "2"){
-    send('wifi', wifi_address, "/digital/7/0");  
+    send('wifi', wifi_address, "/digital/8/0");  
   }
 
 }
