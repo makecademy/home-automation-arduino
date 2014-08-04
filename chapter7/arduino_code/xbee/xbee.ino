@@ -17,6 +17,7 @@ void setup() {
   
   // Give name and ID to device
   rest.set_id(xbee_id);
+  rest.set_name("motion_sensor");
 }
 
 void loop() {
