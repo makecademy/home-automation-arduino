@@ -3,7 +3,7 @@
 #include <aREST.h>
 
 // Motion sensor ID
-String xbee_id = "1";
+char * xbee_id = "1";
 
 // Create ArduREST instance
 aREST rest = aREST();
