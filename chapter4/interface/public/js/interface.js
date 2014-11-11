@@ -1,21 +1,43 @@
-// Hardware parameters
-type = 'serial';
-address = '/dev/cu.usbserial-A702LF8B';
+$(document).ready(function() {
 
-setInterval(function() {
+  $.get('/devices', function( devices ) {
 
-  // Get sensor data
-  json_data = send(type, address, '/digital/8');
+    // Set inputs
+    for (i = 0; i < devices.length; i++){
 
-  // Get sensor ID
-  var sensorID = json_data.id;
-  
-  // Update display  
-  if (json_data.return_value == 0){
-    $("#display_" + sensorID).css("background-color","gray");    
-  }
-  else {
-    $("#display_" + sensorID).css("background-color","orange");  
-  }  
+      // Get device
+      var device = devices[i];
 
-}, 1000);
+      // Set input
+      $.get('/' + device.name + '/mode/8/i');
+
+    }
+
+    setInterval(function() {
+
+      for (i = 0; i < devices.length; i++){
+
+        // Get device
+        var device = devices[i];
+
+        // Get data
+        $.get('/' + device.name + '/digital/8', function(json_data) {
+
+            // Update display  
+            if (json_data.return_value == 0){
+              $("#" + json_data.id).html("No motion");
+              $("#" + json_data.id).css("color","red");    
+            }
+            else {
+              $("#" + json_data.id).html("Motion detected");
+              $("#" + json_data.id).css("color","green");  
+            }    
+          
+        });
+      }
+
+    }, 2000);
+
+  });
+
+});

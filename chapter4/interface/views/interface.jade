@@ -1,0 +1,20 @@
+doctype
+html
+  head
+    title XBee motion sensors
+    link(rel='stylesheet', 
+      href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css')
+    script(src="https://code.jquery.com/jquery-2.1.1.js")
+    script(src="/js/interface.js")
+  body
+    .container
+      .row
+      h1 XBee motion sensors
+        if (devices != '[]')
+          each device in devices
+            if (device.type == 'xbee')
+              .row
+                .col-md-4
+                  h3 Sensor #{device.id}
+                .col-md-4
+                  h3.display(id=device.id)

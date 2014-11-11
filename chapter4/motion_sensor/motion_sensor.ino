@@ -3,7 +3,7 @@
 #include <aREST.h>
 
 // Motion sensor ID
-char * xbee_id = "1";
+char * xbee_id = "2";
 
 // Create ArduREST instance
 aREST rest = aREST();
@@ -15,6 +15,7 @@ void setup() {
   
   // Give name and ID to device
   rest.set_id(xbee_id);
+  rest.set_name("motion2");
 }
 
 void loop() {
