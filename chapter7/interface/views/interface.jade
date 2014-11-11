@@ -1,0 +1,35 @@
+doctype
+html
+  head
+    title Home Automation System
+    link(rel='stylesheet', href='/css/interface.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src="/js/interface.js")
+  body
+    .container
+      h1.text-center Home Automation System
+      .row.voffset
+        h2 Lamp Control
+      .row
+        .col-md-6
+          button.btn.btn-block.btn-primary.btn-lg#lamp1 On
+        .col-md-6
+          button.btn.btn-block.btn-danger.btn-lg#lamp2 Off
+      .row
+        .col-md-4
+          h3#powerDisplay Power:
+        .col-md-4
+          h3#lightDisplay Light level: 
+        .col-md-4
+          h3#status Offline
+      .row.voffset
+        h2 XBee Motion Sensors
+      if (devices != '[]')
+        each device in devices
+          if (device.type == 'xbee')
+            .row
+              .col-md-4
+                h3 Sensor #{device.id}
+              .col-md-4
+                h3.display(id=device.id)

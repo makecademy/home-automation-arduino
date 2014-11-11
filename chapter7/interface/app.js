@@ -1,24 +1,25 @@
 // Module
 var express = require('express');
-var path = require('path');
-var arest = require('arest');
-
-// Create app
 var app = express();
-var port = 3700;
 
-// Set views
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
+// Define port
+var port = 3000;
 
-// Serve files
-app.get('/interface', function(req, res){
-  res.sendfile('views/interface.html')
-});
+// View engine
+app.set('view engine', 'jade');
 
-// API access
-app.get("/send", function(req, res){
-  arest.send(req,res);
+// Set public folder
+app.use(express.static(__dirname + '/public'));
+
+// Rest
+var rest = require("arest")(app);
+rest.addDevice('http','192.168.1.103');
+rest.addDevice('xbee','/dev/tty.usbserial-A702LF8B');
+
+// Serve interface
+app.get('/', function(req, res){
+  var devices = rest.getDevices();
+  res.render('interface', {devices: devices});
 });
 
 // Start server

@@ -1,47 +1,6 @@
-body {
-    font-family: 'Open Sans';
-}
+.voffset { margin-top: 30px; }
 
-.buttonBlock{    
-    margin: 25px;
-}
-
-.sensorBlock{    
-    margin: 25px;
-}
-
-.title{
-    text-align: center;
-    font-size: 40px;
-}
-
-.buttonTitle {
-    font-size: 30px;
-    margin-right: 50px;
-    width: 250px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.mainContainer {
-    width: 500px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.display {
-    width: 40px;
-    height: 40px;
-    margin-left: 50px;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: gray;
-    border-radius: 5px;
-}
-
-.status {
-    font-size: 30px;
-    color: red;
-    vertical-align: middle;
+.vcenter { 
+	vertical-align: center;
+	display: inline-block;
 }
