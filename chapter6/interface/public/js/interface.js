@@ -1,38 +1,47 @@
-// Hardware parameters
-type = 'wifi';
-address = 'arduino.local';
+var devices = [];
 
-setInterval(function() {
+$.get('/devices', function( json_data ) {
+  devices = json_data;
+});
 
-  // Update light level
-  json_data = send(type, address, '/light');
-  $("#lightDisplay").html("Light level: " + json_data.light + "%");    
+$(document).ready(function() {
 
-  // Update status
-  if (json_data.connected == 1){
-    $("#status").html("Lamp Online");
-    $("#status").css("color","green");    
-  }
-  else {
-    $("#status").html("Lamp Offline");
-    $("#status").css("color","red");     
-  }
+  // Update sensors and repeat every 5 seconds
+  setTimeout(updateSensors, 500);
+  setInterval(updateSensors, 5000);
 
-  // Update power
-  json_data = send(type, address, '/power');
-  $("#powerDisplay").html("Power: " + json_data.power + "W");    
+  // Function to control the lamp
+  $('#1').click(function(){
+    $.get('/' + devices[0].name + '/digital/8/1');
+  });
 
-}, 5000);
+  $('#2').click(function(){
+    $.get('/' + devices[0].name + '/digital/8/0');
+  });
 
-// Function to control the lamp
-function buttonClick(clicked_id){
+  function updateSensors(){
 
-  if (clicked_id == "1"){
-    send(type, address, "/digital/8/1");  
-  } 
+    // Update light level
+    $.get('/' + devices[0].name + '/light', function(json_data) {
 
-  if (clicked_id == "2"){
-    send(type, address, "/digital/8/0");  
-  } 
+      $("#lightDisplay").html("Light level: " + json_data.light + " %");    
 
+      // Update status
+      if (json_data.connected == 1){
+        $("#status").html("Lamp Online");
+        $("#status").css("color","green");    
+      }
+      else {
+        $("#status").html("Lamp Offline");
+        $("#status").css("color","red");     
+      }
+
+      // Update power
+      $.get('/' + devices[0].name + '/power', function(json_data) {
+        $("#powerDisplay").html("Power: " + json_data.power + " W");  
+      });
+
+    });
 }
+
+});
