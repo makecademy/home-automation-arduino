@@ -52,7 +52,6 @@ void setup()
   dht.begin();
   
   // Clear LCD
-  delay(2000);
   lcd.clear();
 }
 

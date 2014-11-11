@@ -1,5 +1,8 @@
 // Code for the wireless smart lamp project
 
+#define NUMBER_VARIABLES 2
+#define NUMBER_FUNCTIONS 1
+
 // Import required libraries
 #include <Adafruit_CC3000.h>
 #include <SPI.h>
@@ -23,14 +26,14 @@ float zero_sensor;
 
 // Create CC3000 instance
 Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, 
-ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIV2);
+ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT);
 
 // Create aREST instance
 aREST rest = aREST();
 
 // Your WiFi SSID and password                                         
-#define WLAN_SSID       "yourNetworkName"
-#define WLAN_PASS       "yourPassword"
+#define WLAN_SSID       "KrakowskiePrzedm51m.15(flat15)"
+#define WLAN_PASS       "KrK51flat15_1944_15"
 #define WLAN_SECURITY   WLAN_SEC_WPA2
 
 // The port to listen for incoming TCP connections 
