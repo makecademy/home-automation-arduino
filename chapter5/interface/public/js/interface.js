@@ -1,30 +1,41 @@
-// Hardware parameters
-type = 'serial';
-address = '/dev/cu.AdafruitEZ-Link06d5-SPP';
-speed = 115200;
+var devices = [];
 
-setInterval(function() {
+$.get('/devices', function( json_data ) {
+  devices = json_data;
+});
 
-  // Update light level
-  json_data = send(type, address, '/light', speed);
-  $("#lightDisplay").html("Light level: " + json_data.light + "%");    
+$(document).ready(function() {
 
-  // Update status
-  if (json_data.connected == 1){
-    $("#status").html("Station Online");
-    $("#status").css("color","green");    
+  function updateSensors() {
+    
+    // Update light level and status
+    $.get('/' + devices[0].name + '/light', function(json_data) {
+
+      console.log(json_data.light);
+
+      $("#lightDisplay").html("Light level: " + json_data.light + "%");    
+
+      // Update status
+      if (json_data.connected == 1){
+        $("#status").html("Station Online");
+        $("#status").css("color","green");    
+      }
+      else {
+        $("#status").html("Station Offline");
+        $("#status").css("color","red");     
+      }
+
+      $.get('/' + devices[0].name + '/temperature', function(json_data) {
+        $("#temperatureDisplay").html("Temperature: " + json_data.temperature + "°C");
+        
+        $.get('/' + devices[0].name + '/humidity', function(json_data) {
+          $("#humidityDisplay").html("Humidity: " + json_data.humidity + "%");
+        });
+      });
+    });
   }
-  else {
-    $("#status").html("Station Offline");
-    $("#status").css("color","red");     
-  }
 
-  // Update temperature
-  json_data = send(type, address, '/temperature', speed);
-  $("#temperatureDisplay").html("Temperature: " + json_data.temperature + "°C");
+  setTimeout(updateSensors, 500);
+  setInterval(updateSensors, 5000);
 
-  // Update humidity
-  json_data = send(type, address, '/humidity', speed);
-  $("#humidityDisplay").html("Humidity: " + json_data.humidity + "%");
-
-}, 10000);
+});

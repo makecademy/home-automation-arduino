@@ -1,0 +1,22 @@
+doctype
+html
+  head
+    title Bluetooth Weather Station
+    link(rel='stylesheet', href='/css/interface.css')
+    link(rel='stylesheet', 
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src="/js/interface.js")
+  body
+    .container
+      h1 Bluetooth Weather Station
+      .row.voffset
+        .col-md-6
+          .display#temperatureDisplay Temperature: 
+        .col-md-6
+          .display#humidityDisplay Humidity: 
+      .row
+        .col-md-6
+          .display#lightDisplay Light level: 
+        .col-md-6
+          .status#status Station Offline
