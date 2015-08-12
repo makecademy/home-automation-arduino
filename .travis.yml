@@ -6,6 +6,7 @@ install:
   - arduino --install-library "aREST"
   - arduino --install-library "Adafruit CC3000 Library"
   - arduino --install-library "DHT sensor library"
+  - arduino --install-library "CC3000 MDNS"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/simple_alarm/simple_alarm/simple_alarm.ino
 
