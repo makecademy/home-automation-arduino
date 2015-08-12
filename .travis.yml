@@ -1,0 +1,15 @@
+language: c
+sudo: false
+before_install:
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+install:
+  - arduino --install-library "Adafruit CC3000 Library"
+  - arduino --install-library "DHT sensor library"
+  - arduino --install-library "Adafruit BMP085 Unified"
+  - arduino --install-library "Adafruit Unified Sensor"
+script:
+  - arduino --verify --board arduino:avr:uno $PWD/simple_alam/simple_alam/simple_alam.ino
+notifications:
+  email:
+    on_success: change
+    on_failure: change
