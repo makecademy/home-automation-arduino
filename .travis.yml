@@ -3,14 +3,20 @@ sudo: false
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 install:
+  - arduino --install-library "aREST"
   - arduino --install-library "Adafruit CC3000 Library"
   - arduino --install-library "DHT sensor library"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/simple_alarm/simple_alarm/simple_alarm.ino
 
-  - arduino --verify --board arduino:avr:uno $PWD/weather_measurement/sensors_test/simple_alarm.ino
+  - arduino --verify --board arduino:avr:uno $PWD/weather_measurement/sensors_test/sensors_test.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/building_smart_lamp/relay_test/relay_test.ino
+
+  - arduino --verify --board arduino:avr:uno $PWD/xbee_motion_sensors/motion_sensor/motion_sensor.ino
+  - arduino --verify --board arduino:avr:uno $PWD/xbee_motion_sensors/pir_test/pir_test.ino
+
+  - arduino --verify --board arduino:avr:uno $PWD/bluetooth_weather_station/sensors_test/sensors_test.ino
 
 notifications:
   email:
