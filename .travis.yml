@@ -5,10 +5,8 @@ before_install:
 install:
   - arduino --install-library "Adafruit CC3000 Library"
   - arduino --install-library "DHT sensor library"
-  - arduino --install-library "Adafruit BMP085 Unified"
-  - arduino --install-library "Adafruit Unified Sensor"
 script:
-  - arduino --verify --board arduino:avr:uno $PWD/simple_alam/simple_alam/simple_alam.ino
+  - arduino --verify --board arduino:avr:uno $PWD/simple_alarm/simple_alarm/simple_alarm.ino
 notifications:
   email:
     on_success: change
