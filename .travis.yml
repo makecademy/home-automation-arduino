@@ -7,6 +7,11 @@ install:
   - arduino --install-library "DHT sensor library"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/simple_alarm/simple_alarm/simple_alarm.ino
+
+  - arduino --verify --board arduino:avr:uno $PWD/weather_measurement/sensors_test/simple_alarm.ino
+
+  - arduino --verify --board arduino:avr:uno $PWD/building_smart_lamp/relay_test/relay_test.ino
+
 notifications:
   email:
     on_success: change
