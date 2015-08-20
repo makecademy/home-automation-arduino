@@ -7,17 +7,21 @@ install:
   - arduino --install-library "Adafruit CC3000 Library"
   - arduino --install-library "DHT sensor library"
   - arduino --install-library "CC3000 MDNS"
+  - arduino --install-library "LiquidCrystal_I2C"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/simple_alarm/simple_alarm/simple_alarm.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/weather_measurement/sensors_test/sensors_test.ino
+  - arduino --verify --board arduino:avr:uno $PWD/weather_measurement/weather_lcd/weather_lcd.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/building_smart_lamp/relay_test/relay_test.ino
+  - arduino --verify --board arduino:avr:uno $PWD/building_smart_lamp/smart_lamp/smart_lamp.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/xbee_motion_sensors/motion_sensor/motion_sensor.ino
   - arduino --verify --board arduino:avr:uno $PWD/xbee_motion_sensors/pir_test/pir_test.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/bluetooth_weather_station/sensors_test/sensors_test.ino
+  - arduino --verify --board arduino:avr:uno $PWD/bluetooth_weather_station/bluetooth_weather/bluetooth_weather.ino
 
   - arduino --verify --board arduino:avr:uno $PWD/controlling_lamps_wifi/wifi_test/wifi_test.ino
   - arduino --verify --board arduino:avr:uno $PWD/controlling_lamps_wifi/wireless_lamp/wireless_lamp.ino
